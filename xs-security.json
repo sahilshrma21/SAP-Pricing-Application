@@ -1,0 +1,18 @@
+{
+  "xsappname": "PricingApp",
+  "tenantMode": "dedicated",
+  "scopes": [],
+  "attributes": [],
+  "role-templates": [],
+  "oauth2Configuration": {
+    "redirectUris": [
+      "http://localhost:4004//**",
+      "https://*.trial.applicatiostudio.cloud.sap/**",
+      "https://*.cfapps.us10-004.hana.ondemand.com/**",
+      "https://*.cf.eu10-004.hana.ondemand.com/**",
+      "https://*.cfapps.eu10.hana.ondemand.com/**",
+      "https://qnovate-inc-buildappsqnovate.authentication.eu10.hana.ondemand.com/**",
+      "https://qnovate-inc-buildappsqnovate-dev-pricingapp.cfapps.eu10-004.hana.ondemand.com/**"
+    ]
+  }
+}

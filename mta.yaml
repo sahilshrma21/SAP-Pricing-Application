@@ -1,0 +1,205 @@
+_schema-version: 3.3.0
+ID: PricingApp
+version: 1.0.0
+description: A simple CAP project.
+
+modules:
+
+  # --------------------------
+  # CAP Service
+  # --------------------------
+  - name: PricingApp-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: PricingApp-auth2
+      - name: PricingApp-db
+      - name: PricingApp-destination
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+
+  # --------------------------
+  # HANA DB Deployer
+  # --------------------------
+  - name: PricingApp-db-deployer
+    type: hdb
+    path: gen/db
+    requires:
+      - name: PricingApp-db
+
+  # --------------------------
+  # AppRouter (No localDir!)
+  # --------------------------
+  - name: PricingApp
+    type: approuter.nodejs
+    path: app/router
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          forwardAuthToken: true
+          name: srv-api
+          url: ~{srv-url}
+
+      - name: PricingApp-auth2
+      - name: PricingApp-destination
+      - name: PricingApp-html5-runtime
+
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
+
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+
+  # --------------------------
+  # HTML5 Zip Generator
+  # --------------------------
+  - name: PricingApp-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: PricingApp-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: pricingapppricingapp
+          artifacts:
+            - pricingapppricingapp.zip
+          target-path: resources/
+
+  # --------------------------
+  # HTML5 Module (Fiori App)
+  # --------------------------
+  - name: pricingapppricingapp
+    type: html5
+    path: app/pricing_app
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms: []
+
+  # --------------------------
+  # App Deployer (HTML5 Repo)
+  # --------------------------
+  - name: PricingApp-app-deployer
+    type: com.sap.application.content
+    path: gen
+    requires:
+      - name: PricingApp-auth2
+      - name: srv-api
+      - name: PricingApp-repo-host
+        parameters:
+          content-target: true
+          config:
+            HTML5Runtime_enabled: true
+    build-parameters:
+      build-result: app/
+      requires:
+        - name: pricingapppricingapp
+          artifacts:
+            - pricingapppricingapp.zip
+          target-path: app/
+
+  # --------------------------
+  # Destination Configuration
+  # --------------------------
+  - name: PricingApp-destinations
+    type: com.sap.application.content
+    requires:
+      - name: PricingApp-auth2
+        parameters:
+          service-key:
+            name: PricingApp-auth-key
+
+      - name: PricingApp-repo-host
+        parameters:
+          service-key:
+            name: PricingApp-repo-host-key
+
+      - name: srv-api
+      - name: PricingApp-destination
+        parameters:
+          content-target: true
+
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: PricingApp-html5-repository
+              ServiceInstanceName: PricingApp-repo-host
+              ServiceKeyName: PricingApp-repo-host-key
+              sap.cloud.service: PricingApp.service
+
+            - Name: PricingApp-auth
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: PricingApp-auth2
+              ServiceKeyName: PricingApp-auth-key
+              sap.cloud.service: PricingApp.service
+
+    build-parameters:
+      no-source: true
+
+# --------------------------
+# RESOURCES
+# --------------------------
+resources:
+
+  - name: PricingApp-auth2
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: xs-security.json
+      service: xsuaa
+      service-plan: application
+
+  - name: PricingApp-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+
+  - name: PricingApp-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+
+  - name: PricingApp-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  - name: PricingApp-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+
+# --------------------------
+# GLOBAL PARAMS
+# --------------------------
+parameters:
+  deploy_mode: html5-repo
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production

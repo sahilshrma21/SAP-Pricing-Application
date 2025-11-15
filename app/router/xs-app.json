@@ -1,0 +1,21 @@
+{
+  "welcomeFile": "/pricingapppricingapp/index.html",
+
+  "authenticationMethod": "route",
+
+  "routes": [
+    {
+      "source": "^/pricingapppricingapp/(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/(.*)$",
+      "target": "$1",
+      "destination": "srv-api",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa"
+    }
+  ]
+}
