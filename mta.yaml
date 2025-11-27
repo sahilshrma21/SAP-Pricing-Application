@@ -60,6 +60,11 @@ modules:
     parameters:
       memory: 256M
       disk-quota: 256M
+      env:
+        SESSION_COOKIE_SAMESITE: "None"
+        SESSION_COOKIE_SECURE: "true"
+        SEND_XFRAME_OPTIONS: "false"
+        SEND_CONTENT_SECURITY_POLICY: "false"
 
   # --------------------------
   # HTML5 Zip Generator
@@ -74,15 +79,15 @@ modules:
     build-parameters:
       build-result: resources
       requires:
-        - name: pricingapppricingapp
+        - name: pricing_app
           artifacts:
-            - pricingapppricingapp.zip
+            - pricing_app.zip
           target-path: resources/
 
   # --------------------------
   # HTML5 Module (Fiori App)
   # --------------------------
-  - name: pricingapppricingapp
+  - name: pricing_app
     type: html5
     path: app/pricing_app
     build-parameters:
@@ -110,9 +115,9 @@ modules:
     build-parameters:
       build-result: app/
       requires:
-        - name: pricingapppricingapp
+        - name: pricing_app
           artifacts:
-            - pricingapppricingapp.zip
+            - pricing_app.zip
           target-path: app/
 
   # --------------------------

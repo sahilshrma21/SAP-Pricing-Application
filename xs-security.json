@@ -6,6 +6,7 @@
   "role-templates": [],
   "oauth2Configuration": {
     "redirectUris": [
+      "https://my1000173.us1.test.crm.cloud.sap/login/callback",
       "http://localhost:4004//**",
       "https://*.trial.applicatiostudio.cloud.sap/**",
       "https://*.cfapps.us10-004.hana.ondemand.com/**",
@@ -14,6 +15,7 @@
       "https://qnovate-inc-buildappsqnovate.authentication.eu10.hana.ondemand.com/**",
       "https://qnovate-inc-buildappsqnovate-dev-pricingapp.cfapps.eu10-004.hana.ondemand.com/**",
       "https://qnovate-inc-buildappsqnovate-dev-pricingapp.cfapps.eu10-004.hana.ondemand.com/login/callback"
+      
     ]
   }
 }
