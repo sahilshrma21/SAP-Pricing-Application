@@ -1,4 +1,0 @@
-EmployeeID,FirstName,LastName,Email,Username,manager_EmployeeID
-EMP001,Amit,Shah,amit.shah@example.com,amitshah,
-EMP002,Riya,Mehta,riya.mehta@example.com,riyamehta,EMP001
-EMP003,John,Doe,john.doe@example.com,johndoe,EMP001

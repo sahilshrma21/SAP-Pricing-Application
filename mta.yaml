@@ -60,11 +60,7 @@ modules:
     parameters:
       memory: 256M
       disk-quota: 256M
-      env:
-        SESSION_COOKIE_SAMESITE: "None"
-        SESSION_COOKIE_SECURE: "true"
-        SEND_XFRAME_OPTIONS: "false"
-        SEND_CONTENT_SECURITY_POLICY: "false"
+      
 
   # --------------------------
   # HTML5 Zip Generator
