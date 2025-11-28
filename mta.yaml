@@ -60,7 +60,10 @@ modules:
     parameters:
       memory: 256M
       disk-quota: 256M
+<<<<<<< HEAD
       
+=======
+>>>>>>> parent of ac47a7d (Redeployed with the correct fiori app name (pricing_app))
 
   # --------------------------
   # HTML5 Zip Generator
@@ -75,15 +78,15 @@ modules:
     build-parameters:
       build-result: resources
       requires:
-        - name: pricing_app
+        - name: pricingapppricingapp
           artifacts:
-            - pricing_app.zip
+            - pricingapppricingapp.zip
           target-path: resources/
 
   # --------------------------
   # HTML5 Module (Fiori App)
   # --------------------------
-  - name: pricing_app
+  - name: pricingapppricingapp
     type: html5
     path: app/pricing_app
     build-parameters:
@@ -111,9 +114,9 @@ modules:
     build-parameters:
       build-result: app/
       requires:
-        - name: pricing_app
+        - name: pricingapppricingapp
           artifacts:
-            - pricing_app.zip
+            - pricingapppricingapp.zip
           target-path: app/
 
   # --------------------------
