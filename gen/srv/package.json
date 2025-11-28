@@ -1,0 +1,51 @@
+{
+  "name": "PricingApp",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9",
+    "mbt": "^1.2.29",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-pricing_app": "cds watch --open pricingapp.pricingapp/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy PricingApp --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa",
+        "db": "hana"
+      },
+      "destinations": true,
+      "html5-repo": true,
+      "workzone": true
+    }
+  },
+  "odata": {
+    "version": "v4"
+  },
+  "services": {
+    "PricingService": {
+      "kind": "odata",
+      "path": "/odata/v4/pricing"
+    }
+  },
+  "sapux": [
+    "app/pricing_app"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

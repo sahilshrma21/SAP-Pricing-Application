@@ -1,0 +1,5 @@
+VIEW localized_PricingService_SalesOrgs AS SELECT
+  SalesOrgs_0.name,
+  SalesOrgs_0.descr,
+  SalesOrgs_0.ID
+FROM localized_pricingapp_SalesOrgs AS SalesOrgs_0

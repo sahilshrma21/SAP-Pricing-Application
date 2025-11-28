@@ -1,0 +1,5 @@
+VIEW localized_pricingapp_StatusCodes AS SELECT
+  L_0.name,
+  coalesce(localized_1.descr, L_0.descr) AS descr,
+  L_0.ID
+FROM (pricingapp_StatusCodes AS L_0 LEFT JOIN pricingapp_StatusCodes_texts AS localized_1 ON localized_1.ID = L_0.ID AND localized_1.locale = SESSION_CONTEXT('LOCALE'))

@@ -1,0 +1,5 @@
+VIEW localized_PricingService_StatusCodes AS SELECT
+  StatusCodes_0.name,
+  StatusCodes_0.descr,
+  StatusCodes_0.ID
+FROM localized_pricingapp_StatusCodes AS StatusCodes_0

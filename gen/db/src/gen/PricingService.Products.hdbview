@@ -1,0 +1,10 @@
+VIEW PricingService_Products AS SELECT
+  Products_0.createdAt,
+  Products_0.createdBy,
+  Products_0.modifiedAt,
+  Products_0.modifiedBy,
+  Products_0.ProductID,
+  Products_0.ProductName,
+  Products_0.MaterialNumber,
+  Products_0.BaseUoM_ID
+FROM pricingapp_Products AS Products_0

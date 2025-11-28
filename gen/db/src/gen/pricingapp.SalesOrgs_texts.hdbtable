@@ -1,0 +1,6 @@
+COLUMN TABLE pricingapp_SalesOrgs_texts (
+  locale NVARCHAR(14) NOT NULL,
+  descr NVARCHAR(1000),
+  ID NVARCHAR(20) NOT NULL,
+  PRIMARY KEY(locale, ID)
+)

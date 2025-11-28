@@ -1,0 +1,21 @@
+VIEW PricingService_PricingRequests AS SELECT
+  PricingRequests_0.createdAt,
+  PricingRequests_0.createdBy,
+  PricingRequests_0.modifiedAt,
+  PricingRequests_0.modifiedBy,
+  PricingRequests_0.ID,
+  PricingRequests_0.priceRequestID,
+  PricingRequests_0.salesorg_ID,
+  PricingRequests_0.customer_AccountID,
+  PricingRequests_0.product_ProductID,
+  PricingRequests_0.owner_EmployeeID,
+  PricingRequests_0.keyCombination_ID,
+  PricingRequests_0.price,
+  PricingRequests_0.currency_code,
+  PricingRequests_0.uom_ID,
+  PricingRequests_0.validFrom,
+  PricingRequests_0.validTo,
+  PricingRequests_0.approver_EmployeeID,
+  PricingRequests_0.status_ID,
+  PricingRequests_0.notes
+FROM pricingapp_PricingRequests AS PricingRequests_0

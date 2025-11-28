@@ -1,0 +1,5 @@
+VIEW PricingService_SalesOrgs_texts AS SELECT
+  texts_0.locale,
+  texts_0.descr,
+  texts_0.ID
+FROM pricingapp_SalesOrgs_texts AS texts_0

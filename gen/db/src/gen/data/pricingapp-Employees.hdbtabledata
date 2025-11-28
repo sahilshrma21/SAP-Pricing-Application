@@ -1,0 +1,35 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "PRICINGAPP_EMPLOYEES",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "pricingapp-Employees.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ","
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "EMPLOYEEID",
+          "FIRSTNAME",
+          "LASTNAME",
+          "EMAIL",
+          "USERNAME",
+          "MANAGER_EMPLOYEEID"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "EMPLOYEEID": "EmployeeID",
+        "FIRSTNAME": "FirstName",
+        "LASTNAME": "LastName",
+        "EMAIL": "Email",
+        "USERNAME": "Username",
+        "MANAGER_EMPLOYEEID": "manager_EmployeeID"
+      }
+    }
+  ]
+}

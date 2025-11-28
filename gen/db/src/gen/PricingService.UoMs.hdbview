@@ -1,0 +1,5 @@
+VIEW PricingService_UoMs AS SELECT
+  UoMs_0.name,
+  UoMs_0.descr,
+  UoMs_0.ID
+FROM pricingapp_UoMs AS UoMs_0

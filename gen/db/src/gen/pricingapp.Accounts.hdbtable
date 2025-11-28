@@ -1,0 +1,10 @@
+COLUMN TABLE pricingapp_Accounts (
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  AccountID NVARCHAR(50) NOT NULL,
+  AccountName NVARCHAR(200),
+  Country NVARCHAR(50),
+  PRIMARY KEY(AccountID)
+)

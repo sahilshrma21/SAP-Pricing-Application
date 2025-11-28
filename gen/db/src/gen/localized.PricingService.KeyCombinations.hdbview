@@ -1,0 +1,5 @@
+VIEW localized_PricingService_KeyCombinations AS SELECT
+  KeyCombinations_0.name,
+  KeyCombinations_0.descr,
+  KeyCombinations_0.ID
+FROM localized_pricingapp_KeyCombinations AS KeyCombinations_0

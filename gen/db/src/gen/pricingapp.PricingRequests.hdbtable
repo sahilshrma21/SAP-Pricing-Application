@@ -1,0 +1,22 @@
+COLUMN TABLE pricingapp_PricingRequests (
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  ID NVARCHAR(36) NOT NULL,
+  priceRequestID NVARCHAR(36) NOT NULL,
+  salesorg_ID NVARCHAR(20),
+  customer_AccountID NVARCHAR(50),
+  product_ProductID NVARCHAR(50),
+  owner_EmployeeID NVARCHAR(50),
+  keyCombination_ID NVARCHAR(50),
+  price DECIMAL(15, 2),
+  currency_code NVARCHAR(3),
+  uom_ID NVARCHAR(20),
+  validFrom DATE,
+  validTo DATE,
+  approver_EmployeeID NVARCHAR(50),
+  status_ID NVARCHAR(30),
+  notes NVARCHAR(1000),
+  PRIMARY KEY(ID, priceRequestID)
+)

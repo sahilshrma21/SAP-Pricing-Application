@@ -1,0 +1,6 @@
+COLUMN TABLE pricingapp_StatusCodes (
+  name NVARCHAR(111),
+  descr NVARCHAR(1000),
+  ID NVARCHAR(30) NOT NULL,
+  PRIMARY KEY(ID)
+)

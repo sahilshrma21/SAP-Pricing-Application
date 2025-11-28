@@ -1,0 +1,13 @@
+COLUMN TABLE pricingapp_Employees (
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  EmployeeID NVARCHAR(50) NOT NULL,
+  FirstName NVARCHAR(80),
+  LastName NVARCHAR(80),
+  Email NVARCHAR(120),
+  Username NVARCHAR(80),
+  manager_EmployeeID NVARCHAR(50),
+  PRIMARY KEY(EmployeeID)
+)

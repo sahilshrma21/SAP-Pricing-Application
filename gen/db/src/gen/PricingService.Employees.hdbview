@@ -1,0 +1,12 @@
+VIEW PricingService_Employees AS SELECT
+  Employees_0.createdAt,
+  Employees_0.createdBy,
+  Employees_0.modifiedAt,
+  Employees_0.modifiedBy,
+  Employees_0.EmployeeID,
+  Employees_0.FirstName,
+  Employees_0.LastName,
+  Employees_0.Email,
+  Employees_0.Username,
+  Employees_0.manager_EmployeeID
+FROM pricingapp_Employees AS Employees_0

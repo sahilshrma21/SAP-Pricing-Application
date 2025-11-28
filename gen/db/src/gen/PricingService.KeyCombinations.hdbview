@@ -1,0 +1,5 @@
+VIEW PricingService_KeyCombinations AS SELECT
+  KeyCombinations_0.name,
+  KeyCombinations_0.descr,
+  KeyCombinations_0.ID
+FROM pricingapp_KeyCombinations AS KeyCombinations_0
