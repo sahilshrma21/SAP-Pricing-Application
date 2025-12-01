@@ -1,0 +1,4 @@
+ID,name
+SALESORG/CUSTOMER,SalesOrg + Customer
+SALESORG/PRODUCT,SalesOrg + Product
+SALESORG/CUSTOMER/PRODUCT,SalesOrg + Customer + Product

@@ -1,2 +1,2 @@
-sap.ui.define(["sap/fe/core/AppComponent"],function(n){"use strict";return n.extend("pricingapp.pricingapp.Component",{metadata:{manifest:"json"}})});
+sap.ui.define(["sap/fe/core/AppComponent"],function(e){"use strict";return e.extend("pricing_app.Component",{metadata:{manifest:"json"}})});
 //# sourceMappingURL=Component.js.map

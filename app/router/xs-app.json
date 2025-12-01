@@ -1,11 +1,10 @@
 {
-  "welcomeFile": "/pricingapppricingapp/index.html",
-
+  "welcomeFile": "/pricing_app/index.html",
   "authenticationMethod": "route",
-
+  "sessionTimeout": 30,
   "routes": [
     {
-      "source": "^/pricingapppricingapp/(.*)$",
+      "source": "^/pricing_app/(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",
       "authenticationType": "xsuaa"
@@ -14,7 +13,7 @@
       "source": "^/(.*)$",
       "target": "$1",
       "destination": "srv-api",
-      "csrfProtection": true,
+      "csrfProtection": false,
       "authenticationType": "xsuaa"
     }
   ]
